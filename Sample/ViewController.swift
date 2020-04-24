@@ -24,11 +24,14 @@ class ViewController: UIViewController {
                 NSAttributedString.Key.paragraphStyle: para,
                 NSAttributedString.Key.kern: 4
                 ] as [NSAttributedString.Key : Any]
-            emojiLabel.attributedText = Twemoji.shared.parseAttributeString("テスt💪あaテスト🐶こんにちは🐶", size: 13, attributes: attrs)
-            imageView.image = Twemoji.shared.convertImage(twemoji: Twemoji.shared.parse("🐶").first!)
+                    emojiLabel.attributedText = Twemoji.shared.parseAttributeString("Hello!!🐱☺️", size: 13, attributes: attrs)
+                    imageView.image = Twemoji.shared.convertImage(twemoji: Twemoji.shared.parse("🐶").first!)
         }
     }
 
+    @IBAction func tappedShowList(_ sender: UIButton) {
+        let vc = ListViewController(nibName: "ListViewController", bundle: nil)
+        present(vc, animated: true, completion: nil)
+    }
 
 }
-

@@ -28,10 +28,19 @@
                                     <constraint firstAttribute="height" constant="72" id="Wef-vp-ldc"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sD-xr-iLJ">
+                                <rect key="frame" x="177" y="495.5" width="60" height="30"/>
+                                <state key="normal" title="show list"/>
+                                <connections>
+                                    <action selector="tappedShowList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Ho-6f-9DR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="4ha-L4-k9O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8Z9-wO-NjP"/>
+                            <constraint firstItem="4sD-xr-iLJ" firstAttribute="top" secondItem="4ha-L4-k9O" secondAttribute="bottom" constant="32" id="Wb0-UK-iuF"/>
+                            <constraint firstItem="4sD-xr-iLJ" firstAttribute="centerX" secondItem="4ha-L4-k9O" secondAttribute="centerX" id="Y4o-ic-uBM"/>
                             <constraint firstItem="df0-L5-top" firstAttribute="centerX" secondItem="4ha-L4-k9O" secondAttribute="centerX" id="oWt-FK-Da0"/>
                             <constraint firstItem="4ha-L4-k9O" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="owS-bl-Vud"/>
                             <constraint firstItem="4ha-L4-k9O" firstAttribute="top" secondItem="df0-L5-top" secondAttribute="bottom" constant="68" id="pBc-Zw-4Lf"/>
