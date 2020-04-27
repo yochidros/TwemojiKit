@@ -1,5 +1,6 @@
 # TwemojiKit
-
+[license](https://img.shields.io/badge/license-MIT-green)
+[
 TwemojiKit is simple library that provide [Twemoji](https://github.com/twitter/twemoji) image URL, using twemoji core library.
 
 # What is it ?
