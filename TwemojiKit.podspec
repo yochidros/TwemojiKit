@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "TwemojiKit"
   spec.version      = "0.1.0"
-  spec.summary      = "TwemojiKit is tools fot parse String to [Twemoji](https://github.com/twitter/twemoji)."
+  spec.summary      = "TwemojiKit is tools fot parse String to Twemoji."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,9 +25,10 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-                   DESC
+    TwemojiKit is parseing tools for twemoji [Twemoji](https://github.com/twitter/twemoji).
+                 DESC
 
-  spec.homepage     = "http://github.com/yochidros/TwemojiKit"
+  spec.homepage     = "https://github.com/yochidros/TwemojiKit"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -37,7 +38,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT"
+  spec.license      = { :type => 'MIT', :file => 'LICENSE' }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -74,7 +75,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://github.com/yochidros/TwemojiKit.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/yochidros/TwemojiKit.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -85,9 +86,8 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
   
-  spec.source_files  = "Sources/**/*.{swift, h}", "Core/*.{js}"
-
-  # spec.public_header_files = "Classes/**/*.h"
+  spec.source_files  = "Sources/**/*.{swift,h}", "Core/**/*.{js}"
+  spec.public_header_files = "Sources/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -123,8 +123,10 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # spec.requires_arc = true
+  spec.requires_arc = true
 
+  spec.swift_version = "5.0"
+  spec.module_name  = 'TwemojiKit'
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
 
