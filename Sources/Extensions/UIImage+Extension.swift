@@ -19,6 +19,7 @@ extension UIImage {
         }
         self.init()
     }
+
     func resize(size _size: CGSize) -> UIImage? {
            let widthRatio = _size.width / size.width
            let heightRatio = _size.height / size.height

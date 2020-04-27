@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FDD5A782245295130050AEAC"
-               BuildableName = "AppTwemoji.app"
-               BlueprintName = "AppTwemoji"
+               BuildableName = "AppTwemojiSample.app"
+               BlueprintName = "AppTwemojiSample"
                ReferencedContainer = "container:TwemojiKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FDD5A782245295130050AEAC"
-            BuildableName = "AppTwemoji.app"
-            BlueprintName = "AppTwemoji"
+            BuildableName = "AppTwemojiSample.app"
+            BlueprintName = "AppTwemojiSample"
             ReferencedContainer = "container:TwemojiKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FDD5A782245295130050AEAC"
-            BuildableName = "AppTwemoji.app"
-            BlueprintName = "AppTwemoji"
+            BuildableName = "AppTwemojiSample.app"
+            BlueprintName = "AppTwemojiSample"
             ReferencedContainer = "container:TwemojiKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

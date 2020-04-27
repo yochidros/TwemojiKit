@@ -68,10 +68,15 @@ public class Twemoji {
                 attrString.replaceCharacters(in: nsRange, with: NSAttributedString(attachment: attachment))
             }
         }
+        if let attrs = attrs {
+            attrString.addAttributes(attrs, range: NSRange.init(location: 0, length: attrString.string.count))
+        }
         return NSAttributedString(attributedString: attrString)
     }
-    public func convertImage(twemoji: TwemojiImage) -> UIImage {
-        return UIImage(url: twemoji.imageURL!)
+
+    public func convertImage(twemoji: TwemojiImage) -> UIImage? {
+        guard let url = twemoji.imageURL else { return nil }
+        return UIImage(url: url)
     }
 
 }
@@ -104,8 +109,7 @@ extension Twemoji {
         var result = [ConvertedType]()
         str.emojis.map { String($0)}.forEach { (emoji) in
             context?.evaluateScript("""
-                twemoji.size = 16
-                var iconCode = ""
+                var iconCode = "";
                 var twemojiCode = twemoji.parse('\(emoji)', {
                     callback: function(iconId, options) {
                         iconCode = iconId;
