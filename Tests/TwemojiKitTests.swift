@@ -19,7 +19,7 @@ class TwemojiKitTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     func testSingle() {
-        let emojis = Twemoji.shared.parse("💪djflaksjfas‍️🇯🇵")
+        let emojis = Twemoji.shared.parse("🐱, and 🐶")
         for emoji in emojis {
             guard let url = emoji.imageURL else { return }
             print(url)
