@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwemojiKit
 
 struct TwemojiIcons: Decodable {
     let icons: [String]
@@ -19,6 +20,7 @@ struct TwemojiIcons: Decodable {
     enum codingKeys: String, CodingKey {
         case icons
     }
+
 }
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -51,7 +53,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
+        return 84
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +63,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if let c = cell as? EmojiTableViewCell {
-            c.configure(base: "", url: URL(string: contents[indexPath.row]))
+            let a = Twemoji.shared.parse(contents[indexPath.row]).first?.imageURL
+            c.configure(base: contents[indexPath.row], url: a)
         }
         return cell
     }
