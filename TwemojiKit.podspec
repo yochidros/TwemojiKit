@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "TwemojiKit"
-  spec.version      = "0.1.1"
+  spec.version      = "0.2.0"
   spec.summary      = "TwemojiKit is tools fot parse String to Twemoji."
 
   # This description is used to generate tags and improve search results.
@@ -125,7 +125,7 @@ Pod::Spec.new do |spec|
 
   spec.requires_arc = true
 
-  spec.swift_version = "5.0"
+  spec.swift_version = "5.2"
   spec.module_name  = 'TwemojiKit'
   spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
