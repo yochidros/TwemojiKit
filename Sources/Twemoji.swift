@@ -44,19 +44,19 @@ public class Twemoji {
         isAvailable = false
     }
 
-    public func parse(_ str: String, size: TwemojiSize = .default) -> [TwemojiImage] {
+    public func parse(_ str: String) -> [TwemojiImage] {
         guard str.containsEmoji, test(str: str) else { return [] }
-        var converted = parseWithJS(str: str, size: size)
+        var converted = parseWithJS(str: str)
         guard !converted.isEmpty else {
             converted = convertToCode(str: str)
-            return converted.map({ TwemojiImage.init(base: $0.base, size: size, code: $0.code)})
+            return converted.map({ TwemojiImage.init(base: $0.base, size: .default, code: $0.code)})
         }
-        return converted.map({ TwemojiImage.init(base: $0.base, size: size, code: $0.code)})
+        return converted.map({ TwemojiImage.init(base: $0.base, size: .default, code: $0.code)})
     }
 
     public func parseAttributeString(_ str: String, size: Int = TwemojiSize.default.size, attributes attrs: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
         let attrString = NSMutableAttributedString(string: str, attributes: attrs)
-        let emojiImages = parse(str, size: TwemojiSize.create(size: size))
+        let emojiImages = parse(str)
         var startIndex = attrString.string.startIndex
         emojiImages.forEach { (image) in
             if let range = attrString.string[startIndex...].range(of: image.base), let url = image.imageURL {
@@ -105,7 +105,7 @@ extension Twemoji {
         return result
     }
 
-    private func parseWithJS(str: String, size: TwemojiSize) -> [ConvertedType] {
+    private func parseWithJS(str: String) -> [ConvertedType] {
         var result = [ConvertedType]()
         str.emojis.map { String($0)}.forEach { (emoji) in
             context?.evaluateScript("""

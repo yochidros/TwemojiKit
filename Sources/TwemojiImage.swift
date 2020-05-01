@@ -8,8 +8,8 @@
 
 import Foundation
 
-private let TwemojiCoreVersion = "12.1.5"
-private let TwemojiBaseURL = "https://twemoji.maxcdn.com/"
+private let TwemojiCoreVersion = "12.1.6"
+private let TwemojiBaseURL = "https://twemoji.maxcdn.com/v/"
 private let TwemojiFormatPng = ".png"
 
 public struct TwemojiImage {
@@ -22,6 +22,6 @@ public struct TwemojiImage {
         return "\(TwemojiBaseURL)"
     }
     public var imageURL: URL? {
-        return URL(string: "\(baseURLString)\(size.rawValue)/\(code)\(ext)")
+        return URL(string: "\(baseURLString)\(TwemojiCoreVersion)/\(size.rawValue)/\(code)\(ext)")
     }
 }
