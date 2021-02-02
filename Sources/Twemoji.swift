@@ -22,7 +22,11 @@ public class Twemoji {
     private let bundle: Bundle?
 
     public init(bundle: Bundle? = nil) {
-        self.bundle = bundle != nil ? bundle : .init(identifier: bundleIdentifier)
+        if let b = bundle {
+            self.bundle = b
+        } else {
+            self.bundle = Bundle(identifier: bundleIdentifier)
+        }
         prepare()
     }
 
