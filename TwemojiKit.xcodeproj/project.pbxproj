@@ -18,18 +18,19 @@
 		FD22009824526E030058706D /* JSContext+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22009724526E030058706D /* JSContext+Extension.swift */; };
 		FD22009A24526E370058706D /* TwemojiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22009924526E370058706D /* TwemojiImage.swift */; };
 		FD22009C24526E7E0058706D /* TwemojiSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22009B24526E7E0058706D /* TwemojiSize.swift */; };
+		FD5712BB246030B700598032 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD5712BA246030B700598032 /* Assets.xcassets */; };
 		FD605182245135EC00879A54 /* TwemojiKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD605178245135EC00879A54 /* TwemojiKit.framework */; };
 		FD605187245135EC00879A54 /* TwemojiKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD605186245135EC00879A54 /* TwemojiKitTests.swift */; };
 		FD605189245135EC00879A54 /* TwemojiKit.h in Headers */ = {isa = PBXBuildFile; fileRef = FD60517B245135EC00879A54 /* TwemojiKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FD60519324513D2000879A54 /* Twemoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD60519224513D2000879A54 /* Twemoji.swift */; };
 		FD60519624513D5700879A54 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD60519524513D5700879A54 /* JavaScriptCore.framework */; };
 		FD60519A2451453300879A54 /* twemoji.min.js in Resources */ = {isa = PBXBuildFile; fileRef = FD6051972451450400879A54 /* twemoji.min.js */; };
+		FD8B41BC24601D7900479CEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDD5A78E245295150050AEAC /* Assets.xcassets */; };
 		FDD5A77E24527EF40050AEAC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5A77D24527EF40050AEAC /* String+Extension.swift */; };
 		FDD5A786245295130050AEAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5A785245295130050AEAC /* AppDelegate.swift */; };
 		FDD5A788245295130050AEAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5A787245295130050AEAC /* SceneDelegate.swift */; };
 		FDD5A78A245295130050AEAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5A789245295130050AEAC /* ViewController.swift */; };
 		FDD5A78D245295130050AEAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD5A78B245295130050AEAC /* Main.storyboard */; };
-		FDD5A78F245295150050AEAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDD5A78E245295150050AEAC /* Assets.xcassets */; };
 		FDD5A792245295150050AEAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD5A790245295150050AEAC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		FD22009724526E030058706D /* JSContext+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSContext+Extension.swift"; sourceTree = "<group>"; };
 		FD22009924526E370058706D /* TwemojiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwemojiImage.swift; sourceTree = "<group>"; };
 		FD22009B24526E7E0058706D /* TwemojiSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwemojiSize.swift; sourceTree = "<group>"; };
+		FD5712BA246030B700598032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD605178245135EC00879A54 /* TwemojiKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TwemojiKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD60517B245135EC00879A54 /* TwemojiKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwemojiKit.h; sourceTree = "<group>"; };
 		FD60517C245135EC00879A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				FD60519224513D2000879A54 /* Twemoji.swift */,
 				FD22009924526E370058706D /* TwemojiImage.swift */,
 				FD22009B24526E7E0058706D /* TwemojiSize.swift */,
+				FD5712BA246030B700598032 /* Assets.xcassets */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -195,12 +198,12 @@
 		FDD5A784245295130050AEAC /* Sample */ = {
 			isa = PBXGroup;
 			children = (
+				FDD5A78E245295150050AEAC /* Assets.xcassets */,
 				FD1AD57C2452B5C000B666CF /* twemoji4.json */,
 				FDD5A785245295130050AEAC /* AppDelegate.swift */,
 				FDD5A787245295130050AEAC /* SceneDelegate.swift */,
 				FDD5A789245295130050AEAC /* ViewController.swift */,
 				FDD5A78B245295130050AEAC /* Main.storyboard */,
-				FDD5A78E245295150050AEAC /* Assets.xcassets */,
 				FDD5A790245295150050AEAC /* LaunchScreen.storyboard */,
 				FDD5A793245295150050AEAC /* Info.plist */,
 				FD1AD5742452B4AC00B666CF /* ListViewController.swift */,
@@ -327,6 +330,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD8B41BC24601D7900479CEC /* Assets.xcassets in Resources */,
+				FD5712BB246030B700598032 /* Assets.xcassets in Resources */,
 				FD60519A2451453300879A54 /* twemoji.min.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD5A792245295150050AEAC /* LaunchScreen.storyboard in Resources */,
-				FDD5A78F245295150050AEAC /* Assets.xcassets in Resources */,
 				FD1AD57D2452B5C000B666CF /* twemoji4.json in Resources */,
 				FD1AD57B2452B51A00B666CF /* EmojiTableViewCell.xib in Resources */,
 				FD1AD5772452B4AC00B666CF /* ListViewController.xib in Resources */,

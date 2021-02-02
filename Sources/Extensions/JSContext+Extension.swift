@@ -11,15 +11,16 @@ import JavaScriptCore
 extension JSContext {
     subscript(_ get: String) -> JSValue? {
         get {
-            return self.objectForKeyedSubscript(get)
+            return objectForKeyedSubscript(get)
         }
         set {
             fatalError("get: cannot be used to set")
         }
     }
+
     subscript(_ set: String) -> Any! {
         set {
-            self.setObject(newValue, forKeyedSubscript: set as NSString)
+            setObject(newValue, forKeyedSubscript: set as NSString)
         }
 
         get {

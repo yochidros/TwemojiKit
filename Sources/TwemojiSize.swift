@@ -19,5 +19,4 @@ public enum TwemojiSize: String {
             return 72
         }
     }
-
 }

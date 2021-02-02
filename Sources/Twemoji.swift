@@ -16,32 +16,25 @@ private let bundleIdentifier = "com.yochidros.TwemojiKit"
 
 public class Twemoji {
     private let context = JSContext(virtualMachine: JSVirtualMachine())
-    private static let privaetShared: Twemoji = Twemoji()
-    private var isAvailable: Bool = false
     private typealias ConvertedType = (base: String, code: String)
-    
-    public class var isAvailable: Bool {
-        return privaetShared.isAvailable
-    }
 
-    public class var shared: Twemoji {
-        return privaetShared
-    }
+    public private(set) var isAvailable: Bool = false
 
-    init() {
+    public init() {
         prepare()
     }
 
     private func prepare() {
-        if let jsFilePath = Bundle.init(identifier: bundleIdentifier)?.path(forResource: TwemojiCoreName, ofType: TwemojiCoreExt) {
-            let expandedPath = NSString(string: jsFilePath).expandingTildeInPath
+        let jsFilePath = Bundle(identifier: bundleIdentifier)?.path(forResource: TwemojiCoreName, ofType: TwemojiCoreExt)
+        if let filePath = jsFilePath {
+            let expandedPath = NSString(string: filePath).expandingTildeInPath
             guard let coreContent = try? String(contentsOfFile: expandedPath) else { return }
             context?.evaluateScript(coreContent)
             context?.evaluateScript("var twemoji = require('twemoji');")
             isAvailable = true
-            return
+        } else {
+            isAvailable = false
         }
-        isAvailable = false
     }
 
     public func parse(_ str: String) -> [TwemojiImage] {
@@ -49,16 +42,16 @@ public class Twemoji {
         var converted = parseWithJS(str: str)
         guard !converted.isEmpty else {
             converted = convertToCode(str: str)
-            return converted.map({ TwemojiImage.init(base: $0.base, size: .default, code: $0.code)})
+            return converted.map { TwemojiImage(base: $0.base, size: .default, code: $0.code) }
         }
-        return converted.map({ TwemojiImage.init(base: $0.base, size: .default, code: $0.code)})
+        return converted.map { TwemojiImage(base: $0.base, size: .default, code: $0.code) }
     }
 
-    public func parseAttributeString(_ str: String, size: Int = TwemojiSize.default.size, attributes attrs: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
+    public func parseAttributeString(_ str: String, size: Int = TwemojiSize.default.size, attributes attrs: [NSAttributedString.Key: Any]? = nil) -> NSAttributedString {
         let attrString = NSMutableAttributedString(string: str, attributes: attrs)
         let emojiImages = parse(str)
         var startIndex = attrString.string.startIndex
-        emojiImages.forEach { (image) in
+        emojiImages.forEach { image in
             if let range = attrString.string[startIndex...].range(of: image.base), let url = image.imageURL {
                 let nsRange = NSRange(range, in: attrString.string)
                 startIndex = attrString.string.index(startIndex, offsetBy: 0)
@@ -69,29 +62,33 @@ public class Twemoji {
             }
         }
         if let attrs = attrs {
-            attrString.addAttributes(attrs, range: NSRange.init(location: 0, length: attrString.string.count))
+            attrString.addAttributes(attrs, range: NSRange(location: 0, length: attrString.string.count))
         }
         return NSAttributedString(attributedString: attrString)
     }
 
+    @available(*, deprecated, message: "This is deprecated, Use downloadImage instead")
     public func convertImage(twemoji: TwemojiImage) -> UIImage? {
         guard let url = twemoji.imageURL else { return nil }
         return UIImage(url: url)
     }
 
+    public func downloadImage(twemoji: TwemojiImage, into imageView: UIImageView) {
+        imageView.loadTwemoji(twemojiUrl: twemoji.imageURL)
+    }
 }
 
 // MARK: Private Methods
-extension Twemoji {
 
+extension Twemoji {
     private func convertToCode(str: String) -> [ConvertedType] {
         // swift scalars contains \\u{000xxxx}
-        let emojis = str.emojis.map({ String($0) })
+        let emojis = str.emojis.map { String($0) }
         guard !emojis.isEmpty else { return [] }
         var result = [ConvertedType]()
-        emojis.enumerated().forEach({ (index, value) in
+        emojis.enumerated().forEach { _, value in
             let code = value.unicodeScalars
-                .map({ $0.escaped(asASCII: true)})
+                .map { $0.escaped(asASCII: true) }
                 .joined(separator: "-")
                 .replacingOccurrences(of: "{", with: "")
                 .replacingOccurrences(of: "}", with: "")
@@ -101,27 +98,26 @@ extension Twemoji {
                 let converted: ConvertedType = (base: value, code: code)
                 result.append(converted)
             }
-        })
+        }
         return result
     }
 
     private func parseWithJS(str: String) -> [ConvertedType] {
         var result = [ConvertedType]()
-        str.emojis.map { String($0)}.forEach { (emoji) in
+        str.emojis.map { String($0) }.forEach { emoji in
             context?.evaluateScript("""
-                var iconCode = "";
-                var twemojiCode = twemoji.parse('\(emoji)', {
-                    callback: function(iconId, options) {
-                        iconCode = iconId;
-                        return '';
-                    }
-                });
-                """)
+            var iconCode = "";
+            var twemojiCode = twemoji.parse('\(emoji)', {
+                callback: function(iconId, options) {
+                    iconCode = iconId;
+                    return '';
+                }
+            });
+            """)
             if let code = context?["iconCode"]?.toString(), !code.isEmpty {
                 let converted: ConvertedType = (base: emoji, code: code)
                 result.append(converted)
             }
-
         }
         return result
     }
@@ -131,5 +127,4 @@ extension Twemoji {
         guard let result = context?.objectForKeyedSubscript("result")?.toBool() else { return false }
         return result
     }
-
 }

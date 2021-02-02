@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension UIImage {
-    public convenience init(url: URL) {
+public extension UIImage {
+    convenience init(url: URL) {
         do {
             let data = try Data(contentsOf: url)
             self.init(data: data)!
@@ -20,18 +20,42 @@ extension UIImage {
         self.init()
     }
 
-    func resize(size _size: CGSize) -> UIImage? {
-           let widthRatio = _size.width / size.width
-           let heightRatio = _size.height / size.height
-           let ratio = widthRatio < heightRatio ? widthRatio : heightRatio
+    internal func resize(size _size: CGSize) -> UIImage? {
+        let widthRatio = _size.width / size.width
+        let heightRatio = _size.height / size.height
+        let ratio = widthRatio < heightRatio ? widthRatio : heightRatio
 
-           let resizedSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+        let resizedSize = CGSize(width: size.width * ratio, height: size.height * ratio)
 
-           UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
-           draw(in: CGRect(origin: .zero, size: resizedSize))
-           let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-           UIGraphicsEndImageContext()
+        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
+        draw(in: CGRect(origin: .zero, size: resizedSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
 
-           return resizedImage
-       }
+        return resizedImage
+    }
+
+    convenience init?(named: String) {
+        self.init(named: named, in: Bundle.twemojiResouces, compatibleWith: nil)
+    }
+}
+
+extension UIImageView {
+    public func loadTwemoji(twemojiUrl: URL?) {
+        guard let url = twemojiUrl else { return }
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let data = data else { return }
+            DispatchQueue.main.async { [weak self] in
+                self?.image = UIImage(data: data)
+            }
+        }.resume()
+    }
+}
+
+class ImageBundle {}
+
+public extension Bundle {
+    static var twemojiResouces: Bundle {
+        return Bundle(for: type(of: ImageBundle()))
+    }
 }
