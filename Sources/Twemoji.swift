@@ -19,13 +19,15 @@ public class Twemoji {
     private typealias ConvertedType = (base: String, code: String)
 
     public private(set) var isAvailable: Bool = false
+    private let bundle: Bundle?
 
-    public init() {
+    public init(bundle: Bundle? = nil) {
+        self.bundle = bundle != nil ? bundle : .init(identifier: bundleIdentifier)
         prepare()
     }
 
     private func prepare() {
-        let jsFilePath = Bundle(identifier: bundleIdentifier)?.path(forResource: TwemojiCoreName, ofType: TwemojiCoreExt)
+        let jsFilePath = bundle?.path(forResource: TwemojiCoreName, ofType: TwemojiCoreExt)
         if let filePath = jsFilePath {
             let expandedPath = NSString(string: filePath).expandingTildeInPath
             guard let coreContent = try? String(contentsOfFile: expandedPath) else { return }
