@@ -25,7 +25,14 @@ public class Twemoji {
     }
 
     private func prepare() {
-        let jsFilePath = Bundle(identifier: bundleIdentifier)?.path(forResource: TwemojiCoreName, ofType: TwemojiCoreExt)
+        let bundle = {
+            #if SWIFT_PACKAGE
+            return Bundle.module
+            #else
+            return Bundle(identifier: bundleIdentifier)
+            #endif
+        }()
+        let jsFilePath = bundle?.path(forResource: TwemojiCoreName, ofType: TwemojiCoreExt)
         if let filePath = jsFilePath {
             let expandedPath = NSString(string: filePath).expandingTildeInPath
             guard let coreContent = try? String(contentsOfFile: expandedPath) else { return }
