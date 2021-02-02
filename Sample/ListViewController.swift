@@ -6,8 +6,8 @@
 //  Copyright © 2020 yochidros. All rights reserved.
 //
 
-import UIKit
 import TwemojiKit
+import UIKit
 
 struct TwemojiIcons: Decodable {
     let icons: [String]
@@ -20,13 +20,13 @@ struct TwemojiIcons: Decodable {
     enum codingKeys: String, CodingKey {
         case icons
     }
-
 }
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     private var contents = [String]()
+    private let twemoji = Twemoji()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,23 +48,22 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
     }
 
-    @IBAction func tappedClose(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func tappedClose(_: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 84
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return contents.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if let c = cell as? EmojiTableViewCell {
-            let a = Twemoji.shared.parse(contents[indexPath.row]).first?.imageURL
-            c.configure(base: contents[indexPath.row], url: a)
+        if let c = cell as? EmojiTableViewCell, let imageUrl = twemoji.parse(contents[indexPath.row]).first?.imageURL {
+            c.configure(base: contents[indexPath.row], url: imageUrl)
         }
         return cell
     }

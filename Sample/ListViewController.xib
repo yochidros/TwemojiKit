@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListViewController" customModule="Sample" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListViewController" customModule="AppTwemojiSample" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="TsV-cA-vxm" id="ZPn-AB-uP7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,29 +21,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TsV-cA-vxm">
-                    <rect key="frame" x="0.0" y="76" width="414" height="786"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-hb-tl5">
-                    <rect key="frame" x="16" y="46" width="39" height="28"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-hb-tl5">
+                    <rect key="frame" x="16" y="46" width="39" height="44"/>
                     <state key="normal" title="Close"/>
                     <connections>
                         <action selector="tappedClose:" destination="-1" eventType="touchUpInside" id="hVX-xp-HI4"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Emoji  |  Twemoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AB7-Im-kYg">
+                    <rect key="frame" x="109.5" y="58" width="195" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="AB7-Im-kYg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="14" id="6Sq-7M-JXi"/>
                 <constraint firstItem="xVI-hb-tl5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="2" id="82V-MA-8So"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TsV-cA-vxm" secondAttribute="trailing" id="9iz-i7-0s6"/>
                 <constraint firstItem="xVI-hb-tl5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="RAA-if-hQZ"/>
-                <constraint firstItem="TsV-cA-vxm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="SuF-qk-zOr"/>
+                <constraint firstItem="TsV-cA-vxm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="SuF-qk-zOr"/>
+                <constraint firstItem="AB7-Im-kYg" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="ZhO-z8-dYw"/>
                 <constraint firstItem="TsV-cA-vxm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bB0-wC-FvA"/>
                 <constraint firstItem="TsV-cA-vxm" firstAttribute="top" secondItem="xVI-hb-tl5" secondAttribute="bottom" constant="2" id="qcl-0J-ce7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TsV-cA-vxm" secondAttribute="bottom" id="sce-SV-J5G"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="145"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

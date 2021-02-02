@@ -6,32 +6,25 @@
 //  Copyright © 2020 yochidros. All rights reserved.
 //
 
-import UIKit
 import TwemojiKit
+import UIKit
 
 class EmojiTableViewCell: UITableViewCell {
+    @IBOutlet var emojiLabel: UILabel!
+    @IBOutlet var iconImageView: UIImageView!
 
-    @IBOutlet weak var emojiLabel: UILabel!
-    @IBOutlet weak var iconImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImageView.image = nil
+        emojiLabel.text = nil
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    func configure(base: String, url: URL?) {
+    func configure(base: String, url: URL) {
         emojiLabel.text = base
-        guard let url = url else { return }
-            URLSession.shared.dataTask(with: url) { (d, r, e) in
-                DispatchQueue.main.async {
-                    guard let data = d else { return }
-                    self.iconImageView.image = UIImage(data: data)
-                }
-        }.resume()
+        iconImageView.loadTwemoji(twemojiUrl: url)
     }
 }

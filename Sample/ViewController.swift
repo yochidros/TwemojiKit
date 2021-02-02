@@ -6,32 +6,33 @@
 //  Copyright © 2020 yochidros. All rights reserved.
 //
 
-import UIKit
 import TwemojiKit
+import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var emojiLabel: UILabel!
+    private let twemoji = Twemoji()
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var emojiLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if Twemoji.isAvailable {
+        if twemoji.isAvailable {
             let para = NSMutableParagraphStyle()
             para.lineSpacing = 4
             let attrs = [
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13),
                 NSAttributedString.Key.paragraphStyle: para,
-                NSAttributedString.Key.kern: 4
-                ] as [NSAttributedString.Key : Any]
-                    emojiLabel.attributedText = Twemoji.shared.parseAttributeString("Hello!!🐱☺️", size: 13, attributes: attrs)
-                    imageView.image = Twemoji.shared.convertImage(twemoji: Twemoji.shared.parse("🐶").first!)
+                NSAttributedString.Key.kern: 4,
+            ] as [NSAttributedString.Key: Any]
+            emojiLabel.attributedText = twemoji.parseAttributeString("Hello!!🐱☺️", size: 13, attributes: attrs)
+
+            imageView.loadTwemoji(twemojiUrl: twemoji.parse("🐶").first?.imageURL)
         }
     }
 
-    @IBAction func tappedShowList(_ sender: UIButton) {
+    @IBAction func tappedShowList(_: UIButton) {
         let vc = ListViewController(nibName: "ListViewController", bundle: nil)
         present(vc, animated: true, completion: nil)
     }
-
 }
