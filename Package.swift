@@ -20,7 +20,7 @@ let package = Package(
         .target(
             name: "TwemojiKit",
             path: "Sources",
-            resources: [.copy("Core")]
+            resources: [.process("Core/twemoji.min.js")]
         )
     ],
     swiftLanguageVersions: [
