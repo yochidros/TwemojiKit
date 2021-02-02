@@ -131,13 +131,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		FD4C551925C90D130098EE1F /* TwemojiKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TwemojiKit;
-			sourceTree = "<group>";
-		};
 		FD60516E245135EC00879A54 = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +156,6 @@
 		FD60517A245135EC00879A54 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				FD4C551925C90D130098EE1F /* TwemojiKit */,
 				FD1AD5732452B3DB00B666CF /* Extensions */,
 				FD60517B245135EC00879A54 /* TwemojiKit.h */,
 				FD60517C245135EC00879A54 /* Info.plist */,
