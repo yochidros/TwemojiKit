@@ -21,12 +21,12 @@ public class Twemoji {
     public private(set) var isAvailable: Bool = false
     private let bundle: Bundle?
 
-    public init(bundle: Bundle? = nil) {
-        if let b = bundle {
-            self.bundle = b
-        } else {
-            self.bundle = Bundle(identifier: bundleIdentifier)
-        }
+    public init() {
+        #if SWIFT_PACKAGE
+        self.bundle = Bundle.module
+        #else
+        self.bundle = Bundle(identifier: bundleIdentifier)
+        #endif
         prepare()
     }
 
