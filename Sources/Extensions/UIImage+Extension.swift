@@ -41,12 +41,19 @@ public extension UIImage {
 }
 
 extension UIImageView {
-    public func loadTwemoji(twemojiUrl: URL?) {
+    public func loadTwemoji(twemojiUrl: URL?, completion: ((Result<UIImage, any Error>) -> Void)? = nil) {
         guard let url = twemojiUrl else { return }
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else { return }
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error {
+                completion?(.failure(error))
+                return
+            }
+            guard let data = data, let image = UIImage(data: data) else {
+                return
+            }
             DispatchQueue.main.async { [weak self] in
-                self?.image = UIImage(data: data)
+                self?.image = image
+                completion?(.success(image))
             }
         }.resume()
     }
