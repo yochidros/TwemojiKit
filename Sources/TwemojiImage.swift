@@ -23,6 +23,6 @@ public struct TwemojiImage {
     }
 
     public var imageURL: URL? {
-        return URL(string: "\(baseURLString)\(TwemojiCoreVersion)/assets/\(size.rawValue)/\(code)\(ext)")
+        return URL(string: "\(baseURLString)\(TwemojiCoreVersion)/assets/\(size.path)/\(code)\(ext)")
     }
 }
